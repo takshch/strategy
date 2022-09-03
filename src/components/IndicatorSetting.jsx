@@ -10,7 +10,7 @@ const IndicatorFields = ({ indicatorId, onChange, values }) => {
     <div className="flex justify-center gap-4 text-sm">
       {fields.map(({ label }, index) =>
         <div key={`indicator-${indicatorId}-${index}`} className="inline-flex items-center gap-2">
-          <span className="capitalize">{label}</span>
+          <span className="capitalize text-xs">{label}</span>
           <Input
             type="number"
             onChange={(e) => onChange(label, e)}
@@ -38,7 +38,7 @@ function IndicatorSetting({ id, setting, setSetting }) {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-4">
+    <div className="flex flex-col justify-center gap-4 bg-zinc-100 p-3 rounded-sm">
       <Select options={OPTIONS} selected={indicator} onChange={onIndicatorChange} />
       <IndicatorFields indicatorId={indicator} onChange={onSettingsChange} values={parameters} />
     </div>
