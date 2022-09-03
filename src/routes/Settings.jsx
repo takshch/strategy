@@ -7,6 +7,7 @@ import { DEFAULT_SETTINGS } from "../constants/indicators";
 const ACTION_TYPES = {
   ADD: 'ADD',
   SAVE: 'SAVE',
+  DELETE: 'DELETE'
 };
 
 const DEFAULT_INDICATOR_SETTING = { indicator: 1, parameters: DEFAULT_SETTINGS[1] };
@@ -14,14 +15,25 @@ const DEFAULT_INDICATOR_SETTING = { indicator: 1, parameters: DEFAULT_SETTINGS[1
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTION_TYPES.ADD:
-      const newState = [...state];
-      newState.push(DEFAULT_INDICATOR_SETTING);
-      return newState;
+      {
+        const newState = [...state];
+        newState.push(DEFAULT_INDICATOR_SETTING);
+        return newState;
+      }
     case ACTION_TYPES.SAVE:
-      const { id, indicator, parameters } = action.payload;
-      const settings = state[id];
-      state[id] = { ...settings, indicator, parameters };
-      return [...state];
+      {
+        const { id, indicator, parameters } = action.payload;
+        const settings = state[id];
+        state[id] = { ...settings, indicator, parameters };
+        return [...state];
+      }
+    case ACTION_TYPES.DELETE:
+      {
+        const newState = [...state];
+        const { id } = action.payload;
+        newState.splice(id, 1);
+        return newState;
+      }
     default:
       return state;
   }
@@ -37,6 +49,10 @@ function SettingsRoute() {
   const setSetting = (payload) => {
     dispatch({ type: ACTION_TYPES.SAVE, payload });
   };
+
+  const deleteSetting = (id) => {
+    dispatch({ type: ACTION_TYPES.DELETE, payload: { id } });
+  }
 
   const save = () => {
     console.log(settings);
@@ -65,6 +81,7 @@ function SettingsRoute() {
               id={index}
               setting={setting}
               setSetting={setSetting}
+              deleteSetting={deleteSetting}
             />
           )}
         </div>
