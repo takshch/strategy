@@ -1,7 +1,9 @@
 import { Icon } from "@iconify/react";
 import { useReducer } from "react";
+import Popup from "reactjs-popup";
 import IndicatorSetting from "../components/IndicatorSetting";
 import Button from "../components/UI/Button";
+import ModalConfirm from "../components/UI/Model/Confirm";
 import { DEFAULT_SETTINGS } from "../constants/indicators";
 
 const ACTION_TYPES = {
@@ -88,9 +90,15 @@ function SettingsRoute() {
       </div>
       <div className="fixed bottom-0 left-0 w-full bg-white py-2 px-3 border-t border-slate-100">
         <div className="flex gap-2 justify-end">
-          <Button color="green" onClick={() => save()}>
-            Save
-          </Button>
+          <ModalConfirm
+            onClose={() => { console.log('closed!!!') }}
+            onConfirm={() => { console.log('confirmed!!!') }}
+            text="Are you sure?"
+          >
+            <Button color="green" onClick={() => save()}>
+              Save
+            </Button>
+          </ModalConfirm>
           <Button color="white" onClick={() => cancel()}>
             Cancel
           </Button>
