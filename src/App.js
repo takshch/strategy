@@ -1,11 +1,14 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Indicator from './components/Indicator';
+import MainRoute from './routes/Main';
 
 function App() {
   return (
-    <div className="App py-2">
-      <Indicator name="EMA Crossover" indicators={[1, 0, 1, 0]}/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainRoute />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
