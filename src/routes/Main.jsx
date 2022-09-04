@@ -1,4 +1,5 @@
 import Indicators from '../components/Indicators';
+import Layout from '../components/Layout';
 import OverallSignals from '../components/OverallSignals';
 
 const INDICATORS = [
@@ -11,14 +12,14 @@ const INDICATORS = [
 
 function MainRoute() {
   return (
-    <div className="w-screen h-screen flex flex-col gap-y-6 py-3 px-2 bg-zinc-50">
+    <Layout>
       <div className="flex flex-col gap-y-6 items-center">
         <div className="inline-flex gap-3">
           <OverallSignals signals={[1, 1, 0, 1]} />
         </div>
         <Indicators indicators={INDICATORS} />
       </div>
-    </div>
+    </Layout>
   );
 }
 

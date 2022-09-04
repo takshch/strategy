@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import { useReducer } from "react";
 import Popup from "reactjs-popup";
 import IndicatorSetting from "../components/IndicatorSetting";
+import Layout from "../components/Layout";
 import Button from "../components/UI/Button";
 import ModalConfirm from "../components/UI/Model/Confirm";
 import { DEFAULT_SETTINGS } from "../constants/indicators";
@@ -66,28 +67,30 @@ function SettingsRoute() {
 
   return (
     <>
-      <div className="min-h-screen min-w-screen h-full w-full flex flex-col items-center gap-y-6 py-3 px-2 pb-20 bg-zinc-50">
-        <div className="flex">
-          <Button
-            onClick={() => addIndicator()}
-            className="flex gap-2 items-center"
-          >
-            <Icon icon="ant-design:plus-outlined" className="text-base" />
-            Add
-          </Button>
+      <Layout>
+        <div className="flex flex-col items-center gap-y-6 pb-20">
+          <div className="flex">
+            <Button
+              onClick={() => addIndicator()}
+              className="flex gap-2 items-center"
+            >
+              <Icon icon="ant-design:plus-outlined" className="text-base" />
+              Add
+            </Button>
+          </div>
+          <div className="flex flex-col gap-10">
+            {settings.map((setting, index) =>
+              <IndicatorSetting
+                key={`indicator-setting-${index}`}
+                id={index}
+                setting={setting}
+                setSetting={setSetting}
+                deleteSetting={deleteSetting}
+              />
+            )}
+          </div>
         </div>
-        <div className="flex flex-col gap-10">
-          {settings.map((setting, index) =>
-            <IndicatorSetting
-              key={`indicator-setting-${index}`}
-              id={index}
-              setting={setting}
-              setSetting={setSetting}
-              deleteSetting={deleteSetting}
-            />
-          )}
-        </div>
-      </div>
+      </Layout>
       <div className="fixed bottom-0 left-0 w-full bg-white py-2 px-3 border-t border-slate-100">
         <div className="flex gap-2 justify-end">
           <ModalConfirm
