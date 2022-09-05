@@ -1,11 +1,11 @@
 import Input from "./UI/Input";
 import Select from "./UI/Select";
 
-import { OPTIONS, SETTINGS, DEFAULT_SETTINGS } from '../constants/indicators';
+import { INDICATORS, PARAMETERS, DEFAULT_PARAMETERS } from '../constants/indicators';
 import { Icon } from "@iconify/react";
 
 const IndicatorFields = ({ indicatorId, onChange, values }) => {
-  const fields = SETTINGS[indicatorId];
+  const fields = PARAMETERS[indicatorId];
 
   return (
     <div className="flex justify-center gap-4 text-sm">
@@ -29,7 +29,7 @@ function IndicatorSetting({ id, setting, setSetting, deleteSetting }) {
 
   const onIndicatorChange = (e) => {
     const indicator = Number(e.target.value);
-    setSetting({ id, indicator, parameters: DEFAULT_SETTINGS[indicator] });
+    setSetting({ id, indicator, parameters: DEFAULT_PARAMETERS[indicator] });
   };
 
   const onSettingsChange = (label, e) => {
@@ -44,7 +44,7 @@ function IndicatorSetting({ id, setting, setSetting, deleteSetting }) {
         <Icon icon="ant-design:delete-filled" color="red" />
       </div>
       <div className="flex justify-center">
-        <Select options={OPTIONS} selected={indicator} onChange={onIndicatorChange} />
+        <Select options={INDICATORS} selected={indicator} onChange={onIndicatorChange} />
       </div>
       <IndicatorFields indicatorId={indicator} onChange={onSettingsChange} values={parameters} />
     </div>

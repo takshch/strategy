@@ -1,13 +1,22 @@
-export const OPTIONS = [
-  { id: '1', text: 'EMA Crossover' },
-  { id: '2', text: 'SMA Crossover' },
-  { id: '3', text: 'MACD Crossover' },
-  { id: '4', text: 'MACD Zero Line Crossover' },
-  { id: '5', text: 'RSI' },
-  { id: '6', text: 'SuperTrend' },
+export const INDICATORS_NAME = [
+  'EMA Crossover',
+  'SMA Crossover',
+  'MACD Crossover',
+  'MACD Zero Line Crossover',
+  'RSI',
+  'SuperTrend',
 ];
 
-export const SETTINGS = [
+export const INDICATORS = [
+  { id: 0, text: INDICATORS_NAME[0] },
+  { id: 1, text: INDICATORS_NAME[1] },
+  { id: 2, text: INDICATORS_NAME[2] },
+  { id: 3, text: INDICATORS_NAME[3] },
+  { id: 4, text: INDICATORS_NAME[4] },
+  { id: 5, text: INDICATORS_NAME[4] },
+];
+
+export const PARAMETERS = [
   [
     { label: 'fast' },
     { label: 'slow' },
@@ -35,7 +44,7 @@ export const SETTINGS = [
   ],
 ];
 
-export const DEFAULT_SETTINGS = [
+export const DEFAULT_PARAMETERS = [
   { fast: 0, slow: 0 },
   { fast: 0, slow: 0 },
   { fast: 0, slow: 0, smoothline: 0 },

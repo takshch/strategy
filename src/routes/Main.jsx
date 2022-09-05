@@ -3,12 +3,12 @@ import Layout from '../components/Layout';
 import OverallSignals from '../components/OverallSignals';
 
 const INDICATORS = [
-  { name: 'EMA Crossover', signals: [1, 0, 0, 1] },
-  { name: 'SMA Crossover', signals: [0, 1, 1, 1] },
-  { name: 'RSI', signals: [0, 1, 1, 1] },
-  { name: 'SuperTrend', signals: [0, 0, 1, 0] },
-  { name: 'SuperTrend', signals: [0, 0, 1, 0] },
-]
+  { id: 1, signals: [1, 0, 0, 1] },
+  { id: 2, signals: [0, 1, 1, 1] },
+  { id: 3, signals: [0, 1, 1, 1] },
+  { id: 4, signals: [0, 0, 1, 0] },
+  { id: 5, signals: [0, 0, 1, 0] },
+];
 
 function MainRoute() {
   return (

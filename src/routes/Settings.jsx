@@ -1,11 +1,10 @@
 import { Icon } from "@iconify/react";
 import { useReducer } from "react";
-import Popup from "reactjs-popup";
 import IndicatorSetting from "../components/IndicatorSetting";
 import Layout from "../components/Layout";
 import Button from "../components/UI/Button";
 import ModalConfirm from "../components/UI/Model/Confirm";
-import { DEFAULT_SETTINGS } from "../constants/indicators";
+import { DEFAULT_PARAMETERS } from "../constants/indicators";
 
 const ACTION_TYPES = {
   ADD: 'ADD',
@@ -13,7 +12,7 @@ const ACTION_TYPES = {
   DELETE: 'DELETE'
 };
 
-const DEFAULT_INDICATOR_SETTING = { indicator: 1, parameters: DEFAULT_SETTINGS[1] };
+const DEFAULT_INDICATOR_SETTING = { indicator: 1, parameters: DEFAULT_PARAMETERS[1] };
 
 const reducer = (state, action) => {
   switch (action.type) {
