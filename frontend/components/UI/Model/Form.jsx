@@ -2,14 +2,20 @@ import { Icon } from "@iconify/react";
 import Popup from "reactjs-popup";
 import Button from "../Button";
 import NoSSR from '../../NoSSR';
+import { cloneElement } from 'react';
+
+export const Trigger = ({ children }) => <>{children}</>;
+export const Form = ({ children }) => <>{children}</>;
 
 function ModalForm({ children, heading, btnText }) {
-  const { trigger, form } = children();
+  const trigger = children.find(({ type }) => type === Trigger) || <></>;
+  const form = children.find(({ type }) => type === Form) || <></>;
 
   return (
     <NoSSR>
+
       <Popup
-        trigger={trigger}
+        trigger={<span>{cloneElement(trigger)}</span>}
         position="top center"
         modal
       >
@@ -21,7 +27,7 @@ function ModalForm({ children, heading, btnText }) {
             <div className="grid gap-3 text-lg mb-auto pt-2 pb-3 px-4">
               {heading}
               <div>
-                {form}
+                {cloneElement(form)}
               </div>
             </div>
             <div className="flex gap-3 border-t border-gray-200 pt-2 pb-2 px-4">
